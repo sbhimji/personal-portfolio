@@ -18,7 +18,7 @@ class Camera {
     createControls() {
         this.controls = new OrbitControls( this.camera, this.canvas );
         this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = .2;
+        this.controls.autoRotateSpeed = .35;
         this.controls.enableDamping = true;
         this.controls.dampingFactor = .03;
         this.controls.maxPolarAngle = Math.PI/2.1;
