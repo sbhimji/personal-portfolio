@@ -27,7 +27,7 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 	scene.add( gltf.scene );
 
 	//color of all court lines
-	gltf.scene.getObjectByName('basketball_court').children[0].children[0].material.color.setHex(0xFFFFFF);
+	gltf.scene.getObjectByName('basketball_court').children[0].children[0].material.color.setHex(0x000000);
 	//color of jumbotrons
 	gltf.scene.children[3].material.color.setHex(0xFFFFFF);
 	gltf.scene.getObjectByName('Cylinder').material.color.setHex(0xFFFFFF);
