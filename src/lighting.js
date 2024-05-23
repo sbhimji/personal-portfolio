@@ -3,7 +3,7 @@ function light(scene) {
     function createLight() {
         const sphereSize = 1;
         const y = 40;
-        for (let x = -20; x < 21; x += 20) {
+        for (let x = -20; x < 21; x += 10) {
             for (let z = -80; z < 81; z += 20) {
                 const pointLight = new PointLight( 0xFFFFFF, 100, 100 );
                 pointLight.position.set( x, y, z );
