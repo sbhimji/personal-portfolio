@@ -1,8 +1,8 @@
-function animate(renderer, scene, camera, controls) {
+function animate(renderer, scene, camera) {
     function animateFrame() {
         requestAnimationFrame(animateFrame);
-        controls.update();
-        renderer.render(scene, camera);
+        camera.controls.update();
+        renderer.render(scene, camera.getCamera());
     }
     animateFrame();
 }
