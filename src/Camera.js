@@ -28,11 +28,44 @@ class Camera {
     }
 
     updateControls() {
-        this.controls.update();
+        //this.controls.update();
     }
 
     getCamera() {
         return this.camera;
+    }
+
+    getJumbotronCamera() {
+        this.controls.autoRotate = false;
+        this.camera.fov = 20;
+        //this.camera.lookAt(0, 100, 0);
+        this.controls.target.set(0, 36, 0);
+        //this.camera.lookAt(0, 100, 0);
+        this.camera.focus = 28;
+        this.controls.minPolarAngle = Math.PI *0.45;
+        this.controls.maxPolarAngle = Math.PI * 0.45;
+        //this.camera.zoom = 2;
+        this.camera.updateProjectionMatrix();
+    }
+
+    getPlayerAttrCamera() {
+        this.camera.position.set( -80, 80, 0 );
+        this.getJumbotronCamera();
+    }
+
+    getAbtMeCamera() {
+        this.camera.position.set( 80, 80, 0 );
+        this.getJumbotronCamera();
+    }
+
+    getPersonalProjCamera() {
+        this.camera.position.set( 0, 80, 80 );
+        this.getJumbotronCamera();
+    }
+
+    getExpCamera() {
+        this.camera.position.set( 0, 80, -80 );
+        this.getJumbotronCamera();
     }
 }
 

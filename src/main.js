@@ -15,6 +15,10 @@ document.body.appendChild( renderer.domElement );
 
 //create camera and orbiting
 const camera = new Camera(renderer.domElement);
+//camera.getPlayerAttrCamera();
+//camera.getAbtMeCamera();
+//camera.getPersonalProjCamera();
+//camera.getExpCamera();
 
 
 
