@@ -26,6 +26,7 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 	
 	//color of all court lines
 	gltf.scene.getObjectByName('basketball_court').children[0].children[0].material.color.setHex(0x000000);
+	gltf.scene.getObjectByName('Cylinder').material.color.setHex(0xcfd6dc);
 
 
 	const textureLoader = new THREE.TextureLoader();
@@ -54,7 +55,7 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 	cubeMesh.position.set(0, 40, 0);
 	scene.add(cubeMesh);
 
-	addHitBoxes(window, scene, width, height);
+	addHitBoxes(window, camera, scene, width, height);
 
 	//add light
 	light(scene);

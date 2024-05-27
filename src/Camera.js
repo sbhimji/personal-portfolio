@@ -5,20 +5,22 @@ class Camera {
     //constructor(scene) {
     constructor(canvas) {
         this.canvas = canvas;
-        this.createCamera();
-        this.createControls();
+        //this.isJumbotronInstance = false;
+        this.defaultCamera();
+        this.defaultControls();
     }
 
-    createCamera() {
+    defaultCamera() {
         this.camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.1, 1000 );
         //this.camera.position.set( 60, 35, 100 );
-        this.camera.position.set( -90, 55, -5 );
+        this.camera.position.set( -80, 50, 30 );
+        this.isJumbotronInstance = false;
     }
 
-    createControls() {
+    defaultControls() {
         this.controls = new OrbitControls( this.camera, this.canvas );
         this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = .35;
+        this.controls.autoRotateSpeed = .45;
         this.controls.enableDamping = true;
         this.controls.dampingFactor = .03;
         this.controls.maxPolarAngle = Math.PI/2.1;
@@ -35,9 +37,11 @@ class Camera {
         return this.camera;
     }
 
-    getJumbotronCamera() {
+    jumbotronCamera() {
+        this.isJumbotronInstance = true;
         this.controls.autoRotate = false;
         this.camera.fov = 20;
+        //this.controls.dampingFactor = 0.0;
         //this.camera.lookAt(0, 100, 0);
         this.controls.target.set(0, 36, 0);
         //this.camera.lookAt(0, 100, 0);
@@ -48,24 +52,24 @@ class Camera {
         this.camera.updateProjectionMatrix();
     }
 
-    getPlayerAttrCamera() {
+    playerAttrCamera() {
         this.camera.position.set( -80, 80, 0 );
-        this.getJumbotronCamera();
+        this.jumbotronCamera();
     }
 
-    getAbtMeCamera() {
+    abtMeCamera() {
         this.camera.position.set( 80, 80, 0 );
-        this.getJumbotronCamera();
+        this.jumbotronCamera();
     }
 
-    getPersonalProjCamera() {
+    personalProjCamera() {
         this.camera.position.set( 0, 80, 80 );
-        this.getJumbotronCamera();
+        this.jumbotronCamera();
     }
 
-    getExpCamera() {
+    expCamera() {
         this.camera.position.set( 0, 80, -80 );
-        this.getJumbotronCamera();
+        this.jumbotronCamera();
     }
 }
 
