@@ -4,6 +4,7 @@ import { Camera } from './Camera.js';
 import { animate } from './animate.js';
 import { light } from './lighting.js';
 
+
 //create scene
 const scene = new THREE.Scene()
 
@@ -15,8 +16,7 @@ document.body.appendChild( renderer.domElement );
 //create camera and orbiting
 const camera = new Camera(renderer.domElement);
 
-//add light
-light(scene);
+
 
 //loader for 3d model
 const loader = new GLTFLoader();
@@ -31,22 +31,37 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 
 	const textureLoader = new THREE.TextureLoader();
 	textureLoader.setPath('../public/textures/');
-	const texture = textureLoader.load('test/space_jam.png');
+	const attrTexture = textureLoader.load('portfolio/player_attr.png');
+	const abtTexture = textureLoader.load('portfolio/abt_me.png');
+	const projTexture = textureLoader.load('portfolio/personal_proj.png');
+	const expTexture = textureLoader.load('portfolio/experience.png');
 	const blankTexture = textureLoader.load('test/black.png');
 	const materialArray = [
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:texture} ), 
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:texture} ), 
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:blankTexture} ), 
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:texture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:texture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:texture} )
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:abtTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:attrTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:blankTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:blankTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:projTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xffffff, map:expTexture} )
 	];
-	
-	let cubeGeometry = new THREE.BoxGeometry(27,27,27);	
+	//fix hardcoding of below dimensions
+	const picWidth = 1600;
+	const picHeight = 822;
+	const yMultiplier = picWidth / picHeight;
+	const height = 20;
+	const width = height * yMultiplier;
+	let cubeGeometry = new THREE.BoxGeometry(width, height, width);	
 	
 	let cubeMesh = new THREE.Mesh( cubeGeometry, materialArray );
 	cubeMesh.position.set(0, 40, 0);
 	scene.add(cubeMesh);
+
+	
+
+	//add light
+	light(scene);
+	// const rectLightHelper = new RectAreaLightHelper( rectLight );
+	// rectLight.add( rectLightHelper );
 
 
 	scene.add( gltf.scene );
