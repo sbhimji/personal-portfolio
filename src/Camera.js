@@ -13,7 +13,7 @@ class Camera {
     defaultCamera() {
         this.camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.1, 1000 );
         //this.camera.position.set( 60, 35, 100 );
-        this.camera.position.set( -80, 50, 30 );
+        this.camera.position.set( -80, 58, 30 );
         this.isJumbotronInstance = false;
     }
 
