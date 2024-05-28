@@ -24,9 +24,8 @@ const loader = new GLTFLoader();
 loader.load( '../Models/court.glb', function ( gltf ) {
 	console.log(gltf.scene);
 	
-	//color of all court lines
+	//change color of all court lines to black
 	gltf.scene.getObjectByName('basketball_court').children[0].children[0].material.color.setHex(0x000000);
-	gltf.scene.getObjectByName('Cylinder').material.color.setHex(0xcfd6dc);
 
 
 	const textureLoader = new THREE.TextureLoader();
@@ -35,12 +34,12 @@ loader.load( '../Models/court.glb', function ( gltf ) {
 	const abtTexture = textureLoader.load('abt_me.png');
 	const projTexture = textureLoader.load('personal_proj.png');
 	const expTexture = textureLoader.load('experience.png');
-	const blankTexture = textureLoader.load('black.png');
+	//const blankTexture = textureLoader.load('black.png');
 	const materialArray = [
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:abtTexture} ),
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:attrTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:blankTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:blankTexture} ),
+		new THREE.MeshStandardMaterial( {color:0x000000} ),
+		new THREE.MeshStandardMaterial( {color:0x000000} ),
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:projTexture} ),
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:expTexture} )
 	];
