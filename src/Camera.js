@@ -5,6 +5,10 @@ class Camera {
     //constructor(scene) {
     constructor(canvas) {
         this.canvas = canvas;
+        this.verticalLayout = false;
+        if (window.innerHeight / window.innerWidth > 1) {
+            this.verticalLayout = true;
+        }
         //this.isJumbotronInstance = false;
         this.defaultCamera();
         this.defaultControls();
@@ -41,6 +45,9 @@ class Camera {
         this.isJumbotronInstance = true;
         this.controls.autoRotate = false;
         this.camera.fov = 20;
+        if (this.verticalLayout) {
+            this.camera.fov = 52;
+        }
         //this.controls.dampingFactor = 0.0;
         //this.camera.lookAt(0, 100, 0);
         this.controls.target.set(0, 36, 0);
