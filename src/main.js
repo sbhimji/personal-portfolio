@@ -21,7 +21,7 @@ const camera = new Camera(renderer.domElement);
 const loader = new GLTFLoader();
 
 //load model, add to scene
-loader.load( '../public/models/court.glb', function ( gltf ) {
+loader.load( '../Models/court.glb', function ( gltf ) {
 	console.log(gltf.scene);
 	
 	//color of all court lines
@@ -30,12 +30,12 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 
 
 	const textureLoader = new THREE.TextureLoader();
-	textureLoader.setPath('../public/textures/');
-	const attrTexture = textureLoader.load('portfolio/player_attr.png');
-	const abtTexture = textureLoader.load('portfolio/abt_me.png');
-	const projTexture = textureLoader.load('portfolio/personal_proj.png');
-	const expTexture = textureLoader.load('portfolio/experience.png');
-	const blankTexture = textureLoader.load('test/black.png');
+	textureLoader.setPath('../Textures/');
+	const attrTexture = textureLoader.load('player_attr.png');
+	const abtTexture = textureLoader.load('abt_me.png');
+	const projTexture = textureLoader.load('personal_proj.png');
+	const expTexture = textureLoader.load('experience.png');
+	const blankTexture = textureLoader.load('black.png');
 	const materialArray = [
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:abtTexture} ),
 		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:attrTexture} ),
@@ -63,7 +63,7 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 	scene.add( gltf.scene );
 	console.log(scene);
 
-	const infoTexture = textureLoader.load('portfolio/info_text.png');
+	const infoTexture = textureLoader.load('info_text.png');
 	const infoBoxGeo = new THREE.PlaneGeometry(878/21.5, 284/21.5);
 
     const infoBoxMesh = new THREE.Mesh(
