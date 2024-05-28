@@ -37,12 +37,12 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 	const expTexture = textureLoader.load('portfolio/experience.png');
 	const blankTexture = textureLoader.load('test/black.png');
 	const materialArray = [
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:abtTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:attrTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:blankTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:blankTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:projTexture} ),
-		new THREE.MeshStandardMaterial( {color:0xffffff, map:expTexture} )
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:abtTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:attrTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:blankTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:blankTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:projTexture} ),
+		new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:expTexture} )
 	];
 	const picWidth = 1600;
 	const picHeight = 822;
@@ -62,6 +62,18 @@ loader.load( '../public/models/court.glb', function ( gltf ) {
 
 	scene.add( gltf.scene );
 	console.log(scene);
+
+	const infoTexture = textureLoader.load('portfolio/info_text.png');
+	const infoBoxGeo = new THREE.PlaneGeometry(878/21.5, 284/21.5);
+
+    const infoBoxMesh = new THREE.Mesh(
+        infoBoxGeo, 
+        new THREE.MeshStandardMaterial( {color:0xFFFFFF, map:infoTexture, transparent:true, opacity:1.0, side:THREE.DoubleSide} )
+    );
+    infoBoxMesh.position.set(-30, .05, 21.3);
+	infoBoxMesh.rotation.x = - Math.PI/2;
+	infoBoxMesh.rotation.z = - Math.PI/2;
+	scene.add(infoBoxMesh);
 
 	animate(renderer, scene, camera);
 }, undefined, function ( error ) {
