@@ -47,6 +47,28 @@ function addHitBoxes(window, camera, scene, width, height) {
     function createEventListeners() {
         const raycaster = new Raycaster();
         let pointer = new Vector2();
+        window.addEventListener('pointerdown', (event) => {
+            if (camera.verticalLayout && camera.isJumbotronInstance) {
+                pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	            pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+                raycaster.setFromCamera( pointer, camera.getCamera() );
+                const intersects = raycaster.intersectObjects( scene.children );
+                let notRotating = true;
+                for ( let i = 0; i < intersects.length; i ++ ) {
+                    
+                    if (intersects[ i ].object.name.includes('HitBoxPlane')) {
+                        notRotating = false;
+                        //for some reason if two hit boxes are detected
+                        break;
+                    }
+                }
+                if (notRotating == true) {
+                    camera.defaultCamera();
+                    camera.defaultControls();
+                }
+            }
+            
+        })
         window.addEventListener('pointerup', (event) => {
             console.log("click event occurred");
             console.log(event.clientX);
