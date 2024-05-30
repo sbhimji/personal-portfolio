@@ -48,7 +48,7 @@ function addHitBoxes(window, camera, scene, width, height) {
         const raycaster = new Raycaster();
         let pointer = new Vector2();
         window.addEventListener('pointerdown', (event) => {
-            if (camera.verticalLayout && camera.isJumbotronInstance) {
+            if (camera.isJumbotronInstance) {
                 pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	            pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
                 raycaster.setFromCamera( pointer, camera.getCamera() );
