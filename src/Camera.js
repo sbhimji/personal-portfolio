@@ -17,7 +17,11 @@ class Camera {
     defaultCamera() {
         this.camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 0.1, 1000 );
         //this.camera.position.set( 60, 35, 100 );
-        this.camera.position.set( -80, 58, 30 );
+        if (this.verticalLayout) {
+            this.camera.position.set( -80, 58, 42);
+        } else {
+            this.camera.position.set( -80, 58, 30 );
+        }
         this.isJumbotronInstance = false;
     }
 
@@ -26,7 +30,13 @@ class Camera {
         this.controls.autoRotate = true;
         this.controls.autoRotateSpeed = .45;
         this.controls.enableDamping = true;
-        this.controls.dampingFactor = .03;
+        if (this.verticalLayout) {
+            this.controls.dampingFactor = .03;
+            this.controls.panSpeed = 2.5;
+        } else {
+            this.controls.dampingFactor = .03;
+            this.controls.panSpeed = 2;
+        }
         this.controls.maxPolarAngle = Math.PI/2.1;
         this.controls.minPolarAngle = Math.PI/3.3;
         this.controls.enableZoom = false;
@@ -47,6 +57,7 @@ class Camera {
         this.camera.fov = 20;
         if (this.verticalLayout) {
             this.camera.fov = 52;
+            this.controls.panSpeed = 3.5;
         }
         //this.controls.dampingFactor = 0.0;
         //this.camera.lookAt(0, 100, 0);
